@@ -3,35 +3,48 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Iridescent Dental Academy: Composite Veneer Masterclass by Dr Charles Brandon (BDS, King's College London). 4-day advanced, intensive, hands-on layered composite veneer training (32 hours CPD)." />
-  <meta name="theme-color" content="#070A12" />
-  <title>Composite Veneer Masterclass | Dr Charles Brandon | Iridescent Dental Academy</title>
 
+  <title>Composite Veneer Masterclass | Dr Charles Brandon | Iridescent Dental Academy</title>
+  <meta name="description" content="A 4-day advanced composite veneer masterclass by Dr Charles Brandon. Strong practical emphasis: design, place and polish three full maxillary arches of layered composite veneers. Wed–Sat 09:00–17:00. 32 hours CPD." />
+  <meta name="theme-color" content="#0A1320" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Composite Veneer Masterclass | Dr Charles Brandon" />
+  <meta property="og:description" content="Advanced, intensive, clinician-focused training with strong practical emphasis. 32 hours CPD." />
+  <meta property="og:type" content="website" />
+
+  <!-- Dentistry-first, professional styling (minimal “neon”, strong whitespace, clinical tone) -->
   <style>
     :root{
-      --bg0:#070A12;
-      --bg1:#0A1021;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.08);
-      --stroke: rgba(255,255,255,.10);
-      --stroke2: rgba(255,255,255,.14);
+      /* Clinical palette */
+      --bg: #0A1320;
+      --bg2:#0E1A2A;
+      --surface: rgba(255,255,255,.06);
+      --surface2: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.12);
+      --stroke2: rgba(255,255,255,.18);
       --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
+      --muted: rgba(255,255,255,.72);
       --muted2: rgba(255,255,255,.58);
 
-      --a1:#7dd3fc;
-      --a2:#a78bfa;
-      --a3:#34d399;
+      /* Professional accent (teal/blue) */
+      --accent: #6EE7F2;
+      --accent2:#93C5FD;
+
+      --success:#34d399;
       --danger:#fb7185;
 
-      --shadow: 0 30px 80px rgba(0,0,0,.55);
-      --shadow2: 0 16px 40px rgba(0,0,0,.35);
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --shadow2: 0 12px 36px rgba(0,0,0,.35);
+
       --r12: 12px;
       --r16: 16px;
       --r20: 20px;
-      --r28: 28px;
-      --max: 1160px;
-      --focus: 0 0 0 4px rgba(125, 211, 252, .25);
+      --r24: 24px;
+
+      --max: 1180px;
+      --focus: 0 0 0 4px rgba(110, 231, 242, .22);
+
       color-scheme: dark;
     }
 
@@ -42,73 +55,65 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color: var(--text);
       background:
-        radial-gradient(1200px 700px at 15% 10%, rgba(125,211,252,.18), transparent 60%),
-        radial-gradient(1100px 700px at 85% 20%, rgba(167,139,250,.16), transparent 62%),
-        radial-gradient(900px 600px at 50% 115%, rgba(52,211,153,.10), transparent 62%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      line-height: 1.5;
-      letter-spacing: .1px;
+        radial-gradient(1200px 720px at 20% -10%, rgba(110,231,242,.12), transparent 60%),
+        radial-gradient(1100px 700px at 90% 10%, rgba(147,197,253,.10), transparent 62%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      line-height:1.55;
+      letter-spacing:.1px;
       overflow-x:hidden;
     }
-    a{ color: inherit; text-decoration:none; }
+
+    a{ color:inherit; text-decoration:none; }
     .container{ width:min(var(--max), calc(100% - 2rem)); margin-inline:auto; }
 
-    /* Skip link */
+    /* Accessibility */
     .skip{
       position:absolute; left:-999px; top:0; z-index:999;
-      padding:.8rem 1rem;
+      padding:.85rem 1rem;
       border-radius: 999px;
       background: rgba(17,24,39,.92);
-      border: 1px solid rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.16);
       color: var(--text);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
     }
     .skip:focus{ left:1rem; top:1rem; outline:none; box-shadow: var(--focus); }
 
-    /* Noise overlay */
-    .noise{
-      pointer-events:none;
-      position:fixed; inset:0; z-index:-1;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
-      mix-blend-mode: overlay;
-      opacity:.35;
-    }
-
     /* Header */
     header{
-      position:sticky; top:0; z-index:50;
-      background: rgba(7,10,18,.55);
+      position:sticky; top:0; z-index:60;
+      background: rgba(10,19,32,.72);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,.10);
     }
     .nav{
       display:flex; align-items:center; justify-content:space-between;
       gap:1rem;
-      padding: .9rem 0;
+      padding: .95rem 0;
     }
     .brand{
       display:flex; align-items:center; gap:.75rem;
       font-weight: 900;
       letter-spacing: .2px;
+      min-width: 240px;
     }
     .mark{
       width:38px; height:38px;
-      border-radius: 14px;
+      border-radius: 12px;
       background:
-        radial-gradient(12px 12px at 25% 25%, rgba(255,255,255,.95), rgba(255,255,255,.12) 55%, transparent 60%),
-        conic-gradient(from 210deg, rgba(125,211,252,.95), rgba(167,139,250,.95), rgba(52,211,153,.85), rgba(125,211,252,.95));
-      box-shadow: 0 16px 30px rgba(0,0,0,.35);
+        radial-gradient(10px 10px at 25% 25%, rgba(255,255,255,.95), rgba(255,255,255,.12) 55%, transparent 60%),
+        linear-gradient(135deg, rgba(110,231,242,.85), rgba(147,197,253,.75));
+      box-shadow: 0 14px 28px rgba(0,0,0,.35);
     }
     .brand small{
       display:block;
-      font-weight:650;
+      font-weight: 650;
       color: var(--muted2);
-      letter-spacing: .15px;
       margin-top: -2px;
+      letter-spacing:.15px;
     }
 
     .links{
-      display:flex; gap:.35rem; align-items:center;
+      display:flex; align-items:center; gap:.25rem;
       padding:.35rem;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.10);
@@ -118,25 +123,25 @@
       padding:.55rem .75rem;
       border-radius: 999px;
       color: var(--muted);
-      font-weight: 700;
+      font-weight: 750;
       font-size: .95rem;
     }
     .links a:hover{ background: rgba(255,255,255,.06); color: var(--text); }
     .links a:focus-visible{ outline:none; box-shadow: var(--focus); }
 
     .actions{ display:flex; gap:.6rem; align-items:center; }
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
       padding:.78rem .95rem;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.05);
       color: var(--text);
-      font-weight: 800;
+      font-weight: 850;
       min-height: 44px;
       box-shadow: 0 10px 22px rgba(0,0,0,.22);
-      transform: translateZ(0);
-      transition: transform .16s ease, background .16s ease, border-color .16s ease;
+      transition: transform .14s ease, background .14s ease, border-color .14s ease;
       white-space:nowrap;
     }
     .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07); }
@@ -144,20 +149,20 @@
     .btn:focus-visible{ outline:none; box-shadow: var(--focus); }
 
     .btnPrimary{
-      border-color: rgba(125,211,252,.30);
-      background: linear-gradient(180deg, rgba(125,211,252,.22), rgba(125,211,252,.06));
+      border-color: rgba(110,231,242,.28);
+      background: linear-gradient(180deg, rgba(110,231,242,.18), rgba(110,231,242,.06));
     }
-    .btnPrimary:hover{ background: linear-gradient(180deg, rgba(125,211,252,.28), rgba(125,211,252,.08)); }
-    .btnGhost{ border-color: rgba(255,255,255,.12); background: rgba(255,255,255,.03); box-shadow:none; }
+    .btnPrimary:hover{ background: linear-gradient(180deg, rgba(110,231,242,.22), rgba(110,231,242,.07)); }
+    .btnGhost{ box-shadow:none; background: rgba(255,255,255,.03); }
 
     .menuBtn{
       display:none;
       padding:.78rem .95rem;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.04);
       color: var(--text);
-      font-weight: 800;
+      font-weight: 850;
       min-height: 44px;
     }
     .menuBtn:focus-visible{ outline:none; box-shadow: var(--focus); }
@@ -169,9 +174,9 @@
     }
     .mobilePanel a{
       display:block;
-      padding: .85rem .85rem;
+      padding: .85rem .9rem;
       border-radius: var(--r16);
-      border: 1px solid rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
       color: var(--muted);
       margin-top:.6rem;
@@ -179,8 +184,33 @@
     }
     .mobilePanel a:hover{ color: var(--text); background: rgba(255,255,255,.06); }
 
+    /* Layout primitives */
+    section{ padding: 2.6rem 0; }
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:1rem;
+      margin-bottom: 1.1rem;
+    }
+    h1{
+      margin: .95rem 0 .7rem;
+      font-size: clamp(2.1rem, 4.6vw, 3.25rem);
+      line-height: 1.05;
+      letter-spacing: -0.8px;
+    }
+    h2{
+      margin:0;
+      font-size: clamp(1.4rem, 2.6vw, 1.95rem);
+      letter-spacing: -0.25px;
+    }
+    .subhead{
+      margin:.35rem 0 0;
+      color: var(--muted);
+      max-width: 88ch;
+    }
+    .muted{ color: var(--muted); }
+
     /* Hero */
-    .hero{ padding: 3.25rem 0 2.25rem; }
+    .hero{ padding: 3.2rem 0 2.2rem; }
     .heroGrid{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
@@ -189,123 +219,105 @@
     }
     .kicker{
       display:inline-flex; align-items:center; gap:.55rem;
-      padding:.4rem .65rem;
+      padding:.45rem .7rem;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.04);
       color: var(--muted);
-      font-weight: 700;
-      font-size: .95rem;
+      font-weight: 800;
+      font-size: .93rem;
     }
-    .pulse{
+    .dot{
       width:10px; height:10px; border-radius: 999px;
-      background: var(--a3);
-      box-shadow: 0 0 0 5px rgba(52,211,153,.14);
-      position:relative;
-    }
-    @keyframes ping{ 0%{ transform:scale(1); opacity:.65; } 75%{ transform:scale(2.2); opacity:0; } 100%{ opacity:0; } }
-    .pulse::after{
-      content:"";
-      position:absolute; inset:-6px;
-      border-radius: 999px;
-      border: 1px solid rgba(52,211,153,.35);
-      animation: ping 1.6s ease-out infinite;
-    }
-    h1{
-      margin: .95rem 0 .7rem;
-      font-size: clamp(2.1rem, 4.6vw, 3.35rem);
-      line-height: 1.03;
-      letter-spacing: -0.9px;
-    }
-    .grad{
-      background: linear-gradient(90deg, rgba(255,255,255,.95), rgba(125,211,252,.92), rgba(167,139,250,.92));
-      -webkit-background-clip: text;
-      background-clip:text;
-      color: transparent;
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(52,211,153,.12);
     }
     .lead{
       margin: 0 0 1.05rem;
-      max-width: 66ch;
+      max-width: 70ch;
       color: var(--muted);
       font-size: 1.08rem;
     }
     .heroActions{ display:flex; flex-wrap:wrap; gap:.7rem; margin: 1.05rem 0 1rem; }
-    .meta{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top: 1.05rem; }
+
+    .meta{
+      display:flex; flex-wrap:wrap; gap:.6rem;
+      margin-top: 1.05rem;
+    }
     .pill{
       display:inline-flex; align-items:center; gap:.55rem;
       padding:.6rem .8rem;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.03);
       color: var(--muted);
-      font-weight: 700;
+      font-weight: 750;
+      font-size: .93rem;
     }
     .ico{ width:18px; height:18px; opacity:.9; }
-    .hint{ margin:.55rem 0 0; color: var(--muted2); font-size:.92rem; }
 
-    /* Glass card */
-    .glass{
-      border-radius: var(--r28);
+    /* Right panel (clinical) */
+    .panel{
+      border-radius: var(--r24);
       border: 1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
       box-shadow: var(--shadow);
       overflow:hidden;
-      position:relative;
     }
-    .glass::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(900px 500px at 20% 0%, rgba(125,211,252,.16), transparent 60%),
-        radial-gradient(900px 520px at 90% 30%, rgba(167,139,250,.14), transparent 62%),
-        radial-gradient(800px 520px at 60% 120%, rgba(52,211,153,.10), transparent 62%);
-      opacity:.8;
-      pointer-events:none;
+    .panelTop{
+      padding: 1rem 1rem .85rem;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:1rem;
     }
-    .glass > *{ position:relative; }
-
-    .side{ padding: 1rem; }
-    .sideHead{ display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; padding: .35rem .25rem .85rem; }
-    .sideHead h3{ margin:0; font-size: 1.1rem; letter-spacing: -0.2px; }
-    .tag{
+    .panelTop h3{ margin:0; font-size: 1.1rem; letter-spacing:-.1px; }
+    .badge{
       padding:.35rem .6rem;
       border-radius: 999px;
-      border: 1px solid rgba(167,139,250,.30);
-      background: rgba(167,139,250,.10);
+      border: 1px solid rgba(110,231,242,.26);
+      background: rgba(110,231,242,.08);
       color: var(--muted);
       font-weight: 850;
       font-size: .86rem;
       white-space:nowrap;
     }
+    .panelBody{ padding: 1rem; }
 
-    .benefits{ display:grid; gap:.65rem; margin-bottom: 1rem; }
+    .benefits{
+      display:grid; gap:.65rem;
+      margin-bottom: .95rem;
+    }
     .benefit{
       display:flex; gap:.75rem; align-items:flex-start;
       padding: .85rem .85rem;
-      border-radius: var(--r20);
+      border-radius: var(--r16);
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.12);
     }
     .tick{
       width:26px; height:26px;
-      border-radius: 10px;
+      border-radius: 9px;
       display:grid; place-items:center;
-      background: rgba(52,211,153,.12);
-      border: 1px solid rgba(52,211,153,.26);
+      background: rgba(110,231,242,.10);
+      border: 1px solid rgba(110,231,242,.18);
       flex: 0 0 auto;
       margin-top: 2px;
     }
     .benefit strong{ display:block; margin-bottom:.12rem; }
     .benefit span{ color: var(--muted); }
 
-    .divider{ border-top: 1px dashed rgba(255,255,255,.16); margin: .9rem 0; }
-
     /* Form */
-    label{ display:block; color: var(--muted); font-weight:700; font-size:.9rem; margin: .15rem 0 .35rem; }
+    form{ margin:0; }
+    label{
+      display:block;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: .9rem;
+      margin: .15rem 0 .35rem;
+    }
     input, select, textarea{
       width:100%;
       border-radius: var(--r16);
-      border: 1px solid rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.18);
       color: var(--text);
       padding: .82rem .88rem;
@@ -315,57 +327,76 @@
     }
     input:focus, select:focus, textarea:focus{
       box-shadow: var(--focus);
-      border-color: rgba(125,211,252,.30);
+      border-color: rgba(110,231,242,.26);
       background: rgba(0,0,0,.24);
     }
     textarea{ min-height: 96px; resize: vertical; }
     .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap:.7rem; }
+    .hint{ margin:.55rem 0 0; color: var(--muted2); font-size:.92rem; }
     .notice{
       display:none;
       margin-top:.75rem;
-      padding:.8rem .9rem;
+      padding:.85rem .95rem;
       border-radius: var(--r16);
-      border: 1px solid rgba(52,211,153,.26);
+      border: 1px solid rgba(52,211,153,.24);
       background: rgba(52,211,153,.10);
       color: rgba(255,255,255,.88);
     }
     .notice.err{
-      border-color: rgba(251,113,133,.30);
+      border-color: rgba(251,113,133,.26);
       background: rgba(251,113,133,.12);
     }
 
-    /* Sections */
-    section{ padding: 2.4rem 0; }
-    .sectionHead{ display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; margin-bottom: 1.1rem; }
-    h2{ margin:0; font-size: clamp(1.4rem, 2.6vw, 1.95rem); letter-spacing: -0.35px; }
-    .subhead{ margin:.35rem 0 0; color: var(--muted); max-width: 86ch; }
-
+    /* Content cards */
     .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .split{ display:grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
     .card{
-      border-radius: var(--r28);
+      border-radius: var(--r24);
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.04);
       box-shadow: var(--shadow2);
-      padding: 1.05rem 1.05rem;
-      position:relative;
-      overflow:hidden;
-      transition: transform .16s ease, background .16s ease, border-color .16s ease;
+      padding: 1.05rem;
     }
-    .card:hover{ transform: translateY(-2px); background: rgba(255,255,255,.055); border-color: rgba(255,255,255,.16); }
-    .card h3{ margin:0 0 .45rem; font-size: 1.05rem; letter-spacing:-.15px; }
+    .card h3{ margin:0 0 .45rem; font-size: 1.05rem; letter-spacing:-.1px; }
     .card p{ margin:0; color: var(--muted); }
 
     .iconBadge{
       width:40px; height:40px;
-      border-radius: 16px;
+      border-radius: 14px;
       display:grid; place-items:center;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.14);
       margin-bottom:.75rem;
     }
     .iconBadge svg{ width:20px; height:20px; opacity:.9; }
+
+    /* Clinical imagery placeholders (optional) */
+    .mediaRow{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 1rem;
+      align-items:stretch;
+      margin-top: 1rem;
+    }
+    .imageCard{
+      border-radius: var(--r24);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      min-height: 240px;
+      position:relative;
+    }
+    .imageCard .ph{
+      position:absolute; inset:0;
+      display:grid; place-items:center;
+      padding: 1.2rem;
+      text-align:center;
+      color: var(--muted);
+    }
+    .imageCard .ph strong{ color: rgba(255,255,255,.88); }
+    .imageCard .ph small{ color: var(--muted2); display:block; margin-top:.35rem; }
 
     /* Timeline */
     .timeline{ display:grid; gap:.85rem; }
@@ -374,20 +405,21 @@
       grid-template-columns: 46px 1fr;
       gap:.85rem;
       padding: 1rem;
-      border-radius: var(--r28);
+      border-radius: var(--r24);
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.04);
       box-shadow: var(--shadow2);
     }
     .num{
       width:46px; height:46px;
-      border-radius: 18px;
+      border-radius: 16px;
       display:grid; place-items:center;
-      border: 1px solid rgba(125,211,252,.26);
-      background: rgba(125,211,252,.10);
+      border: 1px solid rgba(110,231,242,.18);
+      background: rgba(110,231,242,.08);
       font-weight: 950;
     }
     .step p{ margin:.25rem 0 0; color: var(--muted); }
+
     .chips{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.7rem; }
     .chip{
       padding:.45rem .65rem;
@@ -395,18 +427,17 @@
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.14);
       color: var(--muted);
-      font-weight:700;
+      font-weight:750;
       font-size:.88rem;
       white-space:nowrap;
     }
 
-    /* Info rows */
     .infoList{ margin:.75rem 0 0; padding-left: 1.1rem; color: var(--muted); }
     .infoList li{ margin:.45rem 0; }
 
-    /* Details */
+    /* Details (FAQ) */
     details{
-      border-radius: var(--r20);
+      border-radius: var(--r16);
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.04);
       padding: .9rem 1rem;
@@ -425,13 +456,13 @@
 
     /* Footer */
     footer{
-      padding: 1.9rem 0 2.4rem;
+      padding: 2rem 0 2.6rem;
       border-top: 1px solid rgba(255,255,255,.10);
       color: var(--muted);
     }
     .foot{ display:grid; grid-template-columns: 1.2fr .8fr; gap:1rem; align-items:start; }
     .mini{
-      border-radius: var(--r28);
+      border-radius: var(--r24);
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.03);
       padding: 1rem;
@@ -442,16 +473,19 @@
       margin-right:.85rem;
       margin-top:.45rem;
       color: var(--muted);
-      font-weight: 800;
+      font-weight: 850;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,255,255,.22);
     }
-    .linksRow a:hover{ color: var(--text); text-decoration:underline; text-underline-offset:3px; }
+    .linksRow a:hover{ color: var(--text); text-decoration-color: rgba(110,231,242,.45); }
 
-    /* Sticky */
+    /* Sticky CTA */
     .sticky{
       display:none;
-      position:fixed; left:0; right:0; bottom:0; z-index:60;
-      padding: .8rem 1rem;
-      background: rgba(7,10,18,.62);
+      position:fixed; left:0; right:0; bottom:0; z-index:70;
+      padding: .85rem 1rem;
+      background: rgba(10,19,32,.72);
       backdrop-filter: blur(14px);
       border-top: 1px solid rgba(255,255,255,.12);
     }
@@ -462,17 +496,12 @@
     }
     .sticky .row .btn{ flex:1; border-radius: 18px; }
 
-    /* Reveal */
-    @media (prefers-reduced-motion: no-preference){
-      .fadeUp{ opacity:0; transform: translateY(10px); transition: opacity .55s ease, transform .55s ease; }
-      .fadeUp.in{ opacity:1; transform: translateY(0); }
-    }
-
     /* Responsive */
     @media (max-width: 980px){
       .heroGrid{ grid-template-columns: 1fr; }
       .grid3{ grid-template-columns: 1fr; }
       .split{ grid-template-columns: 1fr; }
+      .mediaRow{ grid-template-columns: 1fr; }
       .links{ display:none; }
       .menuBtn{ display:inline-flex; }
       .sticky{ display:block; }
@@ -482,6 +511,11 @@
       .grid2{ grid-template-columns: 1fr; }
       .pill{ width:100%; justify-content:flex-start; }
     }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      .btn{ transition:none; }
+    }
   </style>
 
   <!-- Structured data -->
@@ -490,24 +524,14 @@
     "@context":"https://schema.org",
     "@type":"Course",
     "name":"Composite Veneer Masterclass",
-    "description":"A 4-day advanced, intensive program with strong emphasis on practical dentistry: design, place and polish three full maxillary arches of layered composite veneers. Covers photography, digital smile design, smile try-in, pink aesthetics, placement, layering, polishing and marketing. Accredited with 32 hours CPD upon completion.",
-    "provider":{
-      "@type":"Organization",
-      "name":"Iridescent Dental Academy",
-      "url":"https://drcharlesbrandon.com/dentists/"
-    },
-    "instructor":{
-      "@type":"Person",
-      "name":"Dr Charles Brandon",
-      "jobTitle":"Cosmetic Dentist",
-      "url":"https://drcharlesbrandon.com/dentists/"
-    }
+    "description":"A 4-day advanced, intensive program with strong emphasis on practical dentistry: design, place and polish three full maxillary arches of layered composite veneers. Covers photography, digital smile design, smile try-in, pink aesthetics, placement, layering, polishing and marketing. Wed–Sat 09:00–17:00. Accredited with 32 hours CPD upon completion.",
+    "provider":{"@type":"Organization","name":"Iridescent Dental Academy","url":"https://drcharlesbrandon.com/dentists/"},
+    "instructor":{"@type":"Person","name":"Dr Charles Brandon","jobTitle":"Cosmetic Dentist","url":"https://drcharlesbrandon.com/dentists/"}
   }
   </script>
 </head>
 
 <body>
-  <div class="noise" aria-hidden="true"></div>
   <a class="skip" href="#main">Skip to content</a>
 
   <header>
@@ -517,14 +541,14 @@
           <span class="mark" aria-hidden="true"></span>
           <span>
             Iridescent Dental Academy
-            <small>By Dr Charles Brandon</small>
+            <small>Composite Veneer Masterclass • Dr Charles Brandon</small>
           </span>
         </a>
 
         <nav class="links" aria-label="Page sections">
           <a href="#about">About</a>
           <a href="#overview">Overview</a>
-          <a href="#breakdown">Course breakdown</a>
+          <a href="#breakdown">4-day breakdown</a>
           <a href="#policies">Policies</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -532,14 +556,14 @@
         <div class="actions">
           <button class="menuBtn" id="menuBtn" aria-expanded="false" aria-controls="mobilePanel">Menu</button>
           <a class="btn btnGhost" href="https://drcharlesbrandon.com/dentists/" target="_blank" rel="noopener">Official page</a>
-          <a class="btn btnPrimary" href="#enquire">Enquire →</a>
+          <a class="btn btnPrimary" href="#enquire">Enquire</a>
         </div>
       </div>
 
       <div class="mobilePanel" id="mobilePanel" aria-label="Mobile navigation">
         <a href="#about">About</a>
         <a href="#overview">Overview</a>
-        <a href="#breakdown">Course breakdown</a>
+        <a href="#breakdown">4-day breakdown</a>
         <a href="#policies">Policies</a>
         <a href="#contact">Contact</a>
       </div>
@@ -547,104 +571,124 @@
   </header>
 
   <main id="main">
-    <div id="top" class="hero">
+    <!-- HERO -->
+    <section id="top" class="hero">
       <div class="container">
         <div class="heroGrid">
-          <div class="fadeUp">
+          <div>
             <div class="kicker">
-              <span class="pulse" aria-hidden="true"></span>
-              <span>4-day advanced program • Wed–Sat • 09:00–17:00 • 32 hours CPD</span>
+              <span class="dot" aria-hidden="true"></span>
+              <span>Advanced program • Wed–Sat • 09:00–17:00 • 32 hours CPD</span>
             </div>
 
-            <h1><span class="grad">Composite Veneer Masterclass</span> by Dr Charles Brandon</h1>
+            <h1>Composite Veneer Masterclass <span style="color:rgba(255,255,255,.78); font-weight:800;">by Dr Charles Brandon</span></h1>
 
             <p class="lead">
-              A 4 day program with a strong emphasis on practical dentistry: you will design, place and polish
-              <strong>three full maxillary arches</strong> of layered composite veneers, reviewing the approaches required to create
-              a perfect finish bespoke to different smiles you may encounter.
+              A 4-day course with a strong emphasis on practical dentistry. You will design, place and polish
+              <strong>three full maxillary arches</strong> of layered composite veneers, reviewing the approaches required to create a
+              bespoke finish for different smile presentations.
             </p>
 
             <div class="heroActions">
-              <a class="btn btnPrimary" href="#enquire">Request dates & fees →</a>
-              <a class="btn" href="#breakdown">View the 4-day breakdown</a>
-              <a class="btn btnGhost" href="#about">Meet Dr Charles</a>
+              <a class="btn btnPrimary" href="#enquire">Request dates & fees</a>
+              <a class="btn" href="#breakdown">View day-by-day curriculum</a>
+              <a class="btn btnGhost" href="#policies">View requirements</a>
             </div>
 
-            <div class="meta" aria-label="Key course highlights">
+            <div class="meta" aria-label="Key highlights">
               <span class="pill">
                 <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M7 3v3m10-3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
                 </svg>
-                Wed–Sat cohorts
+                Cohorts run Wed–Sat
               </span>
               <span class="pill">
                 <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M12 20a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" stroke="currentColor" stroke-width="1.7"/>
                   <path d="M12 10v4l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
                 </svg>
-                09:00–17:00
+                09:00–17:00 schedule
               </span>
               <span class="pill">
                 <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M12 21s7-4.4 7-10.5A4.5 4.5 0 0 0 14.5 6C13 6 12 7 12 7s-1-1-2.5-1A4.5 4.5 0 0 0 5 10.5C5 16.6 12 21 12 21Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
                 </svg>
-                Drinks reception Saturday
+                Drinks reception (Sat)
               </span>
             </div>
 
             <p class="hint">
-              This page is an experience-optimised redesign that incorporates key information from the official course page.
-              For booking and definitive terms, use the official page link above.
+              This page is a professional, dentistry-oriented layout using information from the official course page.
+              For definitive pricing, dates and terms, refer to the official page.
             </p>
+
+            <!-- Optional: place clinical imagery here -->
+            <div class="mediaRow" aria-label="Optional clinical imagery">
+              <div class="imageCard" aria-label="Before/after gallery placeholder">
+                <div class="ph">
+                  <div>
+                    <strong>Clinical gallery placeholder</strong>
+                    <small>Replace with approved before/after imagery and ensure patient consent.</small>
+                  </div>
+                </div>
+              </div>
+              <div class="imageCard" aria-label="Instructor headshot placeholder">
+                <div class="ph">
+                  <div>
+                    <strong>Instructor image placeholder</strong>
+                    <small>Insert a professional headshot of Dr Charles Brandon.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <aside class="glass side fadeUp" aria-label="Fast enquiry panel">
-            <div class="sideHead">
-              <h3>Fast enquiry</h3>
-              <span class="tag">Iridescent</span>
+          <!-- Enquiry panel -->
+          <aside class="panel" aria-label="Fast enquiry panel">
+            <div class="panelTop">
+              <h3>Enquire</h3>
+              <span class="badge">Clinician enquiries</span>
             </div>
-
-            <div class="benefits" aria-label="Course outcomes">
-              <div class="benefit">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
-                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+            <div class="panelBody">
+              <div class="benefits" aria-label="What you will cover">
+                <div class="benefit">
+                  <div class="tick" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+                      <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Smile design workflow</strong>
+                    <span>Photography, planning, Digital Smile Design, and smile try-in.</span>
+                  </div>
                 </div>
-                <div>
-                  <strong>Smile design to chairside execution</strong>
-                  <span>Photography, digital smile design, try-in, then placement.</span>
+
+                <div class="benefit">
+                  <div class="tick" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+                      <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Placement to finish</strong>
+                    <span>Layering, anatomy, texture, and polishing protocols.</span>
+                  </div>
+                </div>
+
+                <div class="benefit">
+                  <div class="tick" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+                      <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Documentation & marketing</strong>
+                    <span>Photographing and presenting aesthetic dentistry responsibly.</span>
+                  </div>
                 </div>
               </div>
 
-              <div class="benefit">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
-                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Layering, texturing, polishing</strong>
-                  <span>Refine tooth planes and line angles to lifelike finish.</span>
-                </div>
-              </div>
-
-              <div class="benefit">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
-                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Document + market responsibly</strong>
-                  <span>Photography and marketing of aesthetic dentistry.</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="divider" aria-hidden="true"></div>
-
-            <div id="enquire">
+              <div id="enquire"></div>
               <form id="leadForm" novalidate>
                 <div class="grid2">
                   <div>
@@ -659,7 +703,7 @@
 
                 <div class="grid2" style="margin-top:.7rem;">
                   <div>
-                    <label for="exp">Experience</label>
+                    <label for="exp">Experience level</label>
                     <select id="exp" name="exp" required>
                       <option value="" selected disabled>Select</option>
                       <option>New to composite veneers</option>
@@ -669,48 +713,49 @@
                     </select>
                   </div>
                   <div>
-                    <label for="interest">Primary focus</label>
+                    <label for="interest">Primary enquiry</label>
                     <select id="interest" name="interest" required>
                       <option value="" selected disabled>Select</option>
-                      <option>Smile design workflow</option>
-                      <option>Layering & anatomy</option>
-                      <option>Texturing & polishing</option>
-                      <option>Photography & marketing</option>
+                      <option>Upcoming dates & fees</option>
+                      <option>Suitability / prerequisites</option>
+                      <option>Equipment requirements</option>
+                      <option>Accreditation / CPD</option>
                     </select>
                   </div>
                 </div>
 
                 <div style="margin-top:.7rem;">
-                  <label for="msg">Question (optional)</label>
-                  <textarea id="msg" name="msg" placeholder="E.g., upcoming dates, fees, prerequisites, kit list, accreditation."></textarea>
+                  <label for="msg">Message (optional)</label>
+                  <textarea id="msg" name="msg" placeholder="E.g., preferred dates, your case mix, and what you want to improve."></textarea>
                 </div>
 
                 <button class="btn btnPrimary" style="width:100%; margin-top:.85rem;" type="submit">
-                  Send enquiry →
+                  Send enquiry
                 </button>
 
-                <p class="hint">Demo behaviour: opens your email client with a pre-filled message (no server required).</p>
+                <p class="hint">Demo behaviour: opens your email client with a pre-filled message.</p>
                 <div class="notice" id="notice" role="status" aria-live="polite"></div>
               </form>
             </div>
           </aside>
         </div>
       </div>
-    </div>
+    </section>
 
+    <!-- ABOUT -->
     <section id="about">
       <div class="container">
-        <div class="sectionHead fadeUp">
+        <div class="sectionHead">
           <div>
             <h2>About Dr Charles Brandon</h2>
             <p class="subhead">
-              Key background highlights as presented on the official course page.
+              Summary of background highlights from the official page.
             </p>
           </div>
         </div>
 
         <div class="split">
-          <article class="card fadeUp">
+          <article class="card">
             <div class="iconBadge" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
                 <path d="M12 3l9 6-9 6-9-6 9-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -725,7 +770,7 @@
             </ul>
           </article>
 
-          <article class="card fadeUp">
+          <article class="card">
             <div class="iconBadge" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
                 <path d="M7 21V3h10v18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -742,20 +787,21 @@
       </div>
     </section>
 
+    <!-- OVERVIEW -->
     <section id="overview">
       <div class="container">
-        <div class="sectionHead fadeUp">
+        <div class="sectionHead">
           <div>
             <h2>Program overview</h2>
             <p class="subhead">
               The masterclass studies every stage of the smile design process: photography, digital smile design, smile try-in,
-              preparation of pink aesthetics, placement, layering, polishing, and marketing of your aesthetic dentistry.
+              preparation of pink aesthetics, placement, layering, polishing, and marketing of aesthetic dentistry.
             </p>
           </div>
         </div>
 
         <div class="grid3" role="list">
-          <article class="card fadeUp" role="listitem">
+          <article class="card" role="listitem">
             <div class="iconBadge" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
                 <path d="M4 18c4-10 12-10 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -763,10 +809,10 @@
               </svg>
             </div>
             <h3>Smile design</h3>
-            <p>Photography, case planning, smile sketching, digital smile design, and translating plans to clinical execution.</p>
+            <p>Photography, case planning, smile sketching, Digital Smile Design, and translating plans to clinical execution.</p>
           </article>
 
-          <article class="card fadeUp" role="listitem">
+          <article class="card" role="listitem">
             <div class="iconBadge" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
                 <path d="M8 7h8M6 11h12M8 15h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -774,10 +820,10 @@
               </svg>
             </div>
             <h3>Layering and anatomy</h3>
-            <p>Anterior composite placement, isolation, bonding, shaping and predictable recreation of tooth anatomy.</p>
+            <p>Anterior composite placement: preparation, isolation, bonding, shaping and layered build-ups.</p>
           </article>
 
-          <article class="card fadeUp" role="listitem">
+          <article class="card" role="listitem">
             <div class="iconBadge" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
                 <path d="M12 21s7-4.4 7-10.5A4.5 4.5 0 0 0 14.5 6C13 6 12 7 12 7s-1-1-2.5-1A4.5 4.5 0 0 0 5 10.5C5 16.6 12 21 12 21Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -790,9 +836,10 @@
       </div>
     </section>
 
+    <!-- BREAKDOWN -->
     <section id="breakdown">
       <div class="container">
-        <div class="sectionHead fadeUp">
+        <div class="sectionHead">
           <div>
             <h2>4-day course breakdown</h2>
             <p class="subhead">Each cohort runs Wednesday to Saturday, 09:00–17:00, with a drinks reception on Saturday.</p>
@@ -800,7 +847,7 @@
         </div>
 
         <div class="timeline">
-          <div class="step fadeUp">
+          <div class="step">
             <div class="num">1</div>
             <div>
               <strong>Day 1 — The theory of smile design</strong>
@@ -818,7 +865,7 @@
             </div>
           </div>
 
-          <div class="step fadeUp">
+          <div class="step">
             <div class="num">2</div>
             <div>
               <strong>Day 2 — Layering and tooth anatomy</strong>
@@ -835,7 +882,7 @@
             </div>
           </div>
 
-          <div class="step fadeUp">
+          <div class="step">
             <div class="num">3</div>
             <div>
               <strong>Day 3 — Texturing and polishing your veneers</strong>
@@ -852,7 +899,7 @@
             </div>
           </div>
 
-          <div class="step fadeUp">
+          <div class="step">
             <div class="num">4</div>
             <div>
               <strong>Day 4 — Creating a masterpiece</strong>
@@ -873,17 +920,18 @@
       </div>
     </section>
 
+    <!-- POLICIES -->
     <section id="policies">
       <div class="container">
-        <div class="sectionHead fadeUp">
+        <div class="sectionHead">
           <div>
-            <h2>Important policies and requirements</h2>
-            <p class="subhead">These points are summarised from the official course terms as published on the course page.</p>
+            <h2>Requirements and policies</h2>
+            <p class="subhead">Key points summarised from the official course page.</p>
           </div>
         </div>
 
         <div class="split">
-          <article class="card fadeUp">
+          <article class="card">
             <h3>Booking and attendance</h3>
             <ul class="infoList">
               <li>Course fees are non-refundable.</li>
@@ -893,7 +941,7 @@
             </ul>
           </article>
 
-          <article class="card fadeUp">
+          <article class="card">
             <h3>Equipment and accreditation</h3>
             <ul class="infoList">
               <li>A significant part of the course requires an iPad, Apple Pencil and a DSLR camera.</li>
@@ -903,54 +951,58 @@
             </ul>
           </article>
         </div>
+
+        <p class="hint" style="margin-top:1rem;">
+          For the definitive wording of policies and requirements, consult the official page.
+        </p>
       </div>
     </section>
 
+    <!-- FAQ -->
     <section id="faq">
       <div class="container">
-        <div class="sectionHead fadeUp">
+        <div class="sectionHead">
           <div>
             <h2>FAQ</h2>
-            <p class="subhead">Clear answers reduce friction and improve conversion.</p>
+            <p class="subhead">Clear answers to common clinician questions.</p>
           </div>
         </div>
 
-        <details class="fadeUp">
-          <summary>Is this course for beginners? <span aria-hidden="true">+</span></summary>
+        <details>
+          <summary>Is this course suitable for beginners? <span aria-hidden="true">+</span></summary>
           <div class="faqBody">
-            The official positioning is that this is not an introduction to composite veneers. It is advanced and intensive training designed to refine an already stable skillset.
-            If you are unsure, reach out for advice.
+            The official positioning is that this is not an introduction to composite veneers. It is an advanced, intensive program designed to refine an already stable skillset.
           </div>
         </details>
 
-        <details class="fadeUp">
-          <summary>What’s included in the program focus? <span aria-hidden="true">+</span></summary>
+        <details>
+          <summary>What is covered across the four days? <span aria-hidden="true">+</span></summary>
           <div class="faqBody">
-            The course covers photography, digital smile design, smile try-in, preparation of pink aesthetics, placement, layering, polishing and marketing of aesthetic dentistry,
-            with significant emphasis on practical delivery.
+            The program covers photography, Digital Smile Design, smile try-in, pink aesthetics, placement, layering, polishing, and marketing of aesthetic dentistry, with strong emphasis on practical delivery.
           </div>
         </details>
 
-        <details class="fadeUp">
-          <summary>How do I book? <span aria-hidden="true">+</span></summary>
+        <details>
+          <summary>How do I secure a place? <span aria-hidden="true">+</span></summary>
           <div class="faqBody">
-            Use the official page to enrol, or contact the team via phone or email below. This demo page’s form opens your email client for convenience.
+            Use the official page to enrol. Alternatively, contact the team via phone or email. The enquiry form on this demo page opens a pre-filled email for convenience.
           </div>
         </details>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact">
       <div class="container">
-        <div class="sectionHead fadeUp">
+        <div class="sectionHead">
           <div>
             <h2>Contact</h2>
-            <p class="subhead">Get in touch for dates, fees, and suitability guidance.</p>
+            <p class="subhead">For dates, fees, suitability guidance and enrolment support.</p>
           </div>
         </div>
 
         <div class="split">
-          <article class="card fadeUp">
+          <article class="card">
             <h3>Direct</h3>
             <p class="subhead" style="margin-top:.5rem;">
               Phone: <a href="tel:+447542164798" style="text-decoration:underline; text-underline-offset:3px;">07542 164798</a><br/>
@@ -960,13 +1012,13 @@
             <p class="hint" style="margin-top:1rem;">Opening hours: Monday–Friday, 08:30–17:30.</p>
           </article>
 
-          <article class="card fadeUp">
+          <article class="card">
             <h3>Official resources</h3>
             <ul class="infoList">
               <li><a href="https://drcharlesbrandon.com/dentists/" target="_blank" rel="noopener" style="text-decoration:underline; text-underline-offset:3px;">Dentists / Course page</a></li>
               <li><a href="https://drcharlesbrandon.com/contact/" target="_blank" rel="noopener" style="text-decoration:underline; text-underline-offset:3px;">Contact page</a></li>
             </ul>
-            <p class="hint">For definitive dates, fees and terms, always rely on the official pages.</p>
+            <p class="hint">Always rely on official pages for definitive course details and terms.</p>
           </article>
         </div>
       </div>
@@ -977,10 +1029,10 @@
     <div class="container">
       <div class="foot">
         <div class="mini">
-          <strong>Modern UX improvements included here</strong>
+          <strong>Professional dentistry UX features included</strong>
           <p style="margin:.55rem 0 0;">
-            Consolidated “fit check”, a scannable day-by-day breakdown, and policy highlights. In production, connect the form to a CRM,
-            add a downloadable kit list, and include cohort dates and pricing above the fold.
+            Clear clinician-focused hierarchy, day-by-day structure, requirements surfaced early, and contact pathways optimised for conversion.
+            In production, add a downloadable kit list, cohort dates/pricing above the fold, and integrate the form to a CRM.
           </p>
         </div>
 
@@ -988,7 +1040,7 @@
           <strong>Quick links</strong>
           <div class="linksRow">
             <a href="#enquire">Enquire</a>
-            <a href="#breakdown">Breakdown</a>
+            <a href="#breakdown">Curriculum</a>
             <a href="https://drcharlesbrandon.com/dentists/" target="_blank" rel="noopener">Official page</a>
           </div>
           <p class="hint" style="margin-top:.9rem;">© <span id="year"></span> (demo page)</p>
@@ -999,7 +1051,7 @@
 
   <div class="sticky" role="region" aria-label="Quick actions">
     <div class="row">
-      <a class="btn btnPrimary" href="#enquire">Enquire →</a>
+      <a class="btn btnPrimary" href="#enquire">Enquire</a>
       <a class="btn" href="tel:+447542164798">Call</a>
     </div>
   </div>
@@ -1055,7 +1107,7 @@
         if (!name) return show('Please add your name.', true);
         if (!isEmail(email)) return show('Please enter a valid email address.', true);
         if (!exp) return show('Please select your experience level.', true);
-        if (!interest) return show('Please select your primary focus.', true);
+        if (!interest) return show('Please select your primary enquiry.', true);
 
         const subject = encodeURIComponent('Enquiry: Composite Veneer Masterclass (Iridescent)');
         const body = encodeURIComponent([
@@ -1065,36 +1117,17 @@
           '',
           `Name: ${name}`,
           `Email: ${email}`,
-          `Experience: ${exp}`,
-          `Primary focus: ${interest}`,
-          msg ? `Question: ${msg}` : 'Question: (none)',
+          `Experience level: ${exp}`,
+          `Primary enquiry: ${interest}`,
+          msg ? `Message: ${msg}` : 'Message: (none)',
           '',
           'Thank you.'
         ].join('\n'));
 
         const mailto = `mailto:enquiries@drcharlesbrandon.com?subject=${subject}&body=${body}`;
         show('Ready to send. Opening your email client with a pre-filled message.');
-        setTimeout(() => { window.location.href = mailto; }, 320);
+        setTimeout(() => { window.location.href = mailto; }, 250);
       });
-    })();
-
-    // Reveal animations
-    (function () {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      const els = Array.from(document.querySelectorAll('.fadeUp'));
-      if (!('IntersectionObserver' in window) || els.length === 0) return;
-
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add('in');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.12 });
-
-      els.forEach(el => io.observe(el));
     })();
   </script>
 </body>
