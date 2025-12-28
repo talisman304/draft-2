@@ -4,34 +4,38 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Advanced composite veneer masterclass for dentists. Practical, repeatable workflows: smile design, layering, polishing, and marketing." />
-  <meta name="theme-color" content="#0b1220" />
-  <title>Iridescent Composite Veneer Masterclass | Dr Charles Brandon</title>
+  <meta name="theme-color" content="#070A12" />
+  <title>Composite Veneer Masterclass | Dr Charles Brandon</title>
 
-  <!-- Basic social -->
-  <meta property="og:title" content="Composite Veneer Masterclass | Iridescent" />
-  <meta property="og:description" content="An advanced, hands-on 4-day program focused on predictable composite veneer outcomes." />
-  <meta property="og:type" content="website" />
-
-  <!-- Minimal, fast, accessible styling (no external libraries) -->
+  <!-- Preconnect for faster font loading (system font stack still used) -->
   <style>
     :root{
-      --bg: #0b1220;
-      --panel: #0f1a2e;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.09);
+      /* Neutrals */
+      --bg0:#070A12;
+      --bg1:#0A1021;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.10);
+      --stroke2: rgba(255,255,255,.14);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.70);
-      --subtle: rgba(255,255,255,.12);
-      --brand: #7dd3fc;         /* accent */
-      --brand2:#a78bfa;         /* secondary accent */
-      --ok: #34d399;
-      --warn:#fbbf24;
+      --muted2: rgba(255,255,255,.58);
+
+      /* Accents */
+      --a1:#7dd3fc;
+      --a2:#a78bfa;
+      --a3:#34d399;
       --danger:#fb7185;
-      --shadow: 0 18px 45px rgba(0,0,0,.35);
-      --radius: 18px;
-      --radius2: 28px;
-      --max: 1140px;
-      --focus: 0 0 0 3px rgba(125, 211, 252, .35);
+
+      --shadow: 0 30px 80px rgba(0,0,0,.55);
+      --shadow2: 0 16px 40px rgba(0,0,0,.35);
+      --r12: 12px;
+      --r16: 16px;
+      --r20: 20px;
+      --r28: 28px;
+      --max: 1160px;
+
+      --focus: 0 0 0 4px rgba(125, 211, 252, .25);
       color-scheme: dark;
     }
 
@@ -40,265 +44,347 @@
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(900px 450px at 20% 10%, rgba(125,211,252,.18), transparent 55%),
-        radial-gradient(800px 420px at 80% 20%, rgba(167,139,250,.14), transparent 55%),
-        radial-gradient(700px 520px at 50% 110%, rgba(52,211,153,.10), transparent 60%),
-        var(--bg);
       color: var(--text);
-      line-height:1.45;
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(125,211,252,.18), transparent 60%),
+        radial-gradient(1100px 700px at 85% 20%, rgba(167,139,250,.16), transparent 62%),
+        radial-gradient(900px 600px at 50% 115%, rgba(52,211,153,.10), transparent 62%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      line-height: 1.5;
+      letter-spacing: .1px;
+      overflow-x:hidden;
     }
 
-    a{ color:inherit; text-decoration:none; }
-    a.uline{ text-decoration:underline; text-underline-offset:3px; }
+    a{ color: inherit; text-decoration:none; }
     .container{ width:min(var(--max), calc(100% - 2rem)); margin-inline:auto; }
-    .skip{
-      position:absolute; left:-999px; top:0;
-      background:#111827; color:var(--text);
-      padding:.75rem 1rem; border-radius:12px; z-index:999;
-    }
-    .skip:focus{ left:1rem; top:1rem; outline:none; box-shadow:var(--focus); }
 
-    /* Header */
+    /* Skip link */
+    .skip{
+      position:absolute; left:-999px; top:0; z-index:999;
+      padding:.8rem 1rem;
+      border-radius: 999px;
+      background: rgba(17,24,39,.92);
+      border: 1px solid rgba(255,255,255,.14);
+      color: var(--text);
+      backdrop-filter: blur(10px);
+    }
+    .skip:focus{ left:1rem; top:1rem; outline:none; box-shadow: var(--focus); }
+
+    /* Background mesh / noise */
+    .noise{
+      pointer-events:none;
+      position:fixed; inset:0; z-index:-1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      opacity:.35;
+    }
+
+    /* Header (modern glass) */
     header{
       position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.72);
-      border-bottom: 1px solid var(--subtle);
+      background: rgba(7,10,18,.55);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.10);
     }
     .nav{
       display:flex; align-items:center; justify-content:space-between;
+      gap:1rem;
       padding: .9rem 0;
-      gap: 1rem;
     }
     .brand{
       display:flex; align-items:center; gap:.75rem;
-      font-weight:700;
-      letter-spacing:.2px;
+      font-weight: 800;
+      letter-spacing: .2px;
     }
-    .logo{
-      width:38px; height:38px; border-radius: 14px;
-      background:
-        radial-gradient(12px 12px at 25% 25%, rgba(255,255,255,.95), rgba(255,255,255,.2) 55%, transparent 60%),
-        conic-gradient(from 220deg, rgba(125,211,252,.95), rgba(167,139,250,.95), rgba(52,211,153,.85), rgba(125,211,252,.95));
-      box-shadow: 0 10px 24px rgba(0,0,0,.25);
-    }
-    .navlinks{
-      display:flex; align-items:center; gap:.9rem;
-      font-size:.95rem;
-      color: var(--muted);
-    }
-    .navlinks a{
-      padding:.55rem .7rem;
-      border-radius: 999px;
-    }
-    .navlinks a:hover{ color: var(--text); background: rgba(255,255,255,.06); }
-    .navlinks a:focus-visible{ outline:none; box-shadow:var(--focus); }
-    .cta{
-      display:flex; align-items:center; gap:.55rem;
-      padding:.7rem .95rem;
-      border-radius: 999px;
-      border: 1px solid rgba(125,211,252,.35);
-      background: linear-gradient(180deg, rgba(125,211,252,.18), rgba(125,211,252,.06));
-      color: var(--text);
-      box-shadow: 0 8px 18px rgba(0,0,0,.22);
-      white-space:nowrap;
-      font-weight:600;
-    }
-    .cta:hover{ transform: translateY(-1px); }
-    .cta:active{ transform: translateY(0); }
-    .cta:focus-visible{ outline:none; box-shadow:var(--focus); }
-
-    /* Mobile nav */
-    .menuBtn{
-      display:none;
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--subtle);
-      color: var(--text);
-      padding: .65rem .8rem;
-      border-radius: 999px;
-      font-weight:600;
-    }
-    .menuBtn:focus-visible{ outline:none; box-shadow:var(--focus); }
-    .mobilePanel{
-      display:none;
-      border-top: 1px solid var(--subtle);
-      padding: .75rem 0 1rem;
-    }
-    .mobilePanel a{
-      display:block;
-      padding: .75rem .75rem;
+    .mark{
+      width:38px; height:38px;
       border-radius: 14px;
-      color: var(--muted);
+      background:
+        radial-gradient(12px 12px at 25% 25%, rgba(255,255,255,.95), rgba(255,255,255,.12) 55%, transparent 60%),
+        conic-gradient(from 210deg, rgba(125,211,252,.95), rgba(167,139,250,.95), rgba(52,211,153,.85), rgba(125,211,252,.95));
+      box-shadow: 0 16px 30px rgba(0,0,0,.35);
+      position:relative;
     }
-    .mobilePanel a:hover{ background: rgba(255,255,255,.06); color: var(--text); }
+    .brand small{
+      display:block;
+      font-weight:600;
+      color: var(--muted2);
+      letter-spacing: .15px;
+      margin-top: -2px;
+    }
 
-    /* Hero */
-    .hero{
-      padding: 3.1rem 0 1.8rem;
+    .links{
+      display:flex; gap:.35rem; align-items:center;
+      padding:.35rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
     }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 1.4rem;
-      align-items:start;
-    }
-    .kicker{
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding: .35rem .6rem;
-      border:1px solid rgba(125,211,252,.25);
-      background: rgba(125,211,252,.08);
+    .links a{
+      padding:.55rem .75rem;
       border-radius: 999px;
       color: var(--muted);
-      font-size:.9rem;
+      font-weight: 650;
+      font-size: .95rem;
     }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: var(--ok);
-      box-shadow: 0 0 0 4px rgba(52,211,153,.15);
-    }
-    h1{
-      margin: .85rem 0 .65rem;
-      font-size: clamp(2.0rem, 4.2vw, 3.15rem);
-      line-height: 1.05;
-      letter-spacing:-.6px;
-    }
-    .lead{
-      color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 62ch;
-      margin: 0 0 1.2rem;
-    }
-    .heroActions{
-      display:flex; flex-wrap:wrap; gap:.75rem;
-      margin: 1rem 0 1.1rem;
+    .links a:hover{ background: rgba(255,255,255,.06); color: var(--text); }
+    .links a:focus-visible{ outline:none; box-shadow: var(--focus); }
+
+    .actions{
+      display:flex; gap:.6rem; align-items:center;
     }
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
-      padding:.85rem 1rem;
-      border-radius: 16px;
-      border: 1px solid var(--subtle);
-      background: rgba(255,255,255,.06);
+      padding:.78rem .95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
       color: var(--text);
-      font-weight:650;
+      font-weight: 750;
       min-height: 44px;
-    }
-    .btn:hover{ background: rgba(255,255,255,.08); }
-    .btn:focus-visible{ outline:none; box-shadow:var(--focus); }
-    .btnPrimary{
-      border-color: rgba(125,211,252,.35);
-      background: linear-gradient(180deg, rgba(125,211,252,.25), rgba(125,211,252,.10));
-    }
-    .btnPrimary:hover{ background: linear-gradient(180deg, rgba(125,211,252,.32), rgba(125,211,252,.12)); }
-    .metaRow{
-      display:flex; flex-wrap:wrap; gap:.65rem;
-      margin-top: .9rem;
-    }
-    .pill{
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding:.55rem .75rem;
-      border: 1px solid var(--subtle);
-      border-radius: 999px;
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      font-size:.92rem;
-    }
-    .icon{
-      width:18px; height:18px; display:inline-block;
-      opacity:.9;
-    }
-
-    /* Right hero card */
-    .sideCard{
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
-      border: 1px solid var(--subtle);
-      border-radius: var(--radius2);
-      padding: 1rem;
-      box-shadow: var(--shadow);
-    }
-    .sideTop{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:1rem;
-      margin-bottom: .8rem;
-    }
-    .sideTitle{
-      font-weight:800; letter-spacing:.2px;
-      margin:0;
-    }
-    .badge{
-      padding:.35rem .6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(167,139,250,.35);
-      background: rgba(167,139,250,.10);
-      color: var(--muted);
-      font-size:.85rem;
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+      transform: translateZ(0);
+      transition: transform .16s ease, background .16s ease, border-color .16s ease;
       white-space:nowrap;
     }
-    .sideList{
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07); }
+    .btn:active{ transform: translateY(0); }
+    .btn:focus-visible{ outline:none; box-shadow: var(--focus); }
+
+    .btnPrimary{
+      border-color: rgba(125,211,252,.30);
+      background:
+        linear-gradient(180deg, rgba(125,211,252,.22), rgba(125,211,252,.06));
+    }
+    .btnPrimary:hover{
+      background: linear-gradient(180deg, rgba(125,211,252,.28), rgba(125,211,252,.08));
+    }
+    .btnGhost{
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      box-shadow: none;
+    }
+
+    .menuBtn{
+      display:none;
+      padding:.78rem .95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 750;
+      min-height: 44px;
+    }
+    .menuBtn:focus-visible{ outline:none; box-shadow: var(--focus); }
+
+    .mobilePanel{
+      display:none;
+      padding: .7rem 0 1rem;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .mobilePanel a{
+      display:block;
+      padding: .85rem .85rem;
+      border-radius: var(--r16);
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      margin-top:.6rem;
+      font-weight:700;
+    }
+    .mobilePanel a:hover{ color: var(--text); background: rgba(255,255,255,.06); }
+
+    /* Hero */
+    .hero{
+      padding: 3.25rem 0 2.25rem;
+      position:relative;
+    }
+
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 1.25rem;
+      align-items:start;
+    }
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:.55rem;
+      padding:.4rem .65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-weight: 650;
+      font-size: .95rem;
+    }
+    .pulse{
+      width:10px; height:10px; border-radius: 999px;
+      background: var(--a3);
+      box-shadow: 0 0 0 5px rgba(52,211,153,.14);
+      position:relative;
+    }
+    @keyframes ping{ 0%{ transform:scale(1); opacity:.65; } 75%{ transform:scale(2.2); opacity:0; } 100%{ opacity:0; } }
+    .pulse::after{
+      content:"";
+      position:absolute; inset:-6px;
+      border-radius: 999px;
+      border: 1px solid rgba(52,211,153,.35);
+      animation: ping 1.6s ease-out infinite;
+    }
+
+    h1{
+      margin: .95rem 0 .7rem;
+      font-size: clamp(2.1rem, 4.6vw, 3.35rem);
+      line-height: 1.03;
+      letter-spacing: -0.9px;
+    }
+
+    .grad{
+      background: linear-gradient(90deg, rgba(255,255,255,.95), rgba(125,211,252,.92), rgba(167,139,250,.92));
+      -webkit-background-clip: text;
+      background-clip:text;
+      color: transparent;
+    }
+
+    .lead{
+      margin: 0 0 1.05rem;
+      max-width: 66ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .heroActions{
+      display:flex; flex-wrap:wrap; gap:.7rem;
+      margin: 1.05rem 0 1rem;
+    }
+
+    .meta{
+      display:flex; flex-wrap:wrap; gap:.6rem;
+      margin-top: 1.05rem;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:.55rem;
+      padding:.6rem .8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-weight: 650;
+    }
+    .ico{ width:18px; height:18px; opacity:.9; }
+
+    /* Modern “glass” panel */
+    .glass{
+      border-radius: var(--r28);
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .glass::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(900px 500px at 20% 0%, rgba(125,211,252,.16), transparent 60%),
+        radial-gradient(900px 520px at 90% 30%, rgba(167,139,250,.14), transparent 62%),
+        radial-gradient(800px 520px at 60% 120%, rgba(52,211,153,.10), transparent 62%);
+      opacity:.8;
+      pointer-events:none;
+    }
+    .glass > *{ position:relative; }
+
+    .side{
+      padding: 1rem;
+    }
+    .sideHead{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:1rem;
+      padding: .35rem .25rem .85rem;
+    }
+    .sideHead h3{
+      margin:0;
+      font-size: 1.1rem;
+      letter-spacing: -0.2px;
+    }
+    .tag{
+      padding:.35rem .6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(167,139,250,.30);
+      background: rgba(167,139,250,.10);
+      color: var(--muted);
+      font-weight: 750;
+      font-size: .86rem;
+      white-space:nowrap;
+    }
+
+    .benefits{
       display:grid;
       gap:.65rem;
-      margin: .75rem 0 1rem;
+      margin-bottom: 1rem;
     }
-    .sideItem{
-      display:flex; gap:.7rem; align-items:flex-start;
-      padding:.75rem;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.04);
+    .benefit{
+      display:flex; gap:.75rem; align-items:flex-start;
+      padding: .85rem .85rem;
+      border-radius: var(--r20);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.12);
     }
-    .check{
-      width:22px; height:22px; border-radius: 8px;
-      background: rgba(52,211,153,.14);
-      border: 1px solid rgba(52,211,153,.28);
+    .tick{
+      width:26px; height:26px;
+      border-radius: 10px;
       display:grid; place-items:center;
+      background: rgba(52,211,153,.12);
+      border: 1px solid rgba(52,211,153,.26);
       flex: 0 0 auto;
       margin-top: 2px;
     }
-    .sideItem strong{ display:block; margin-bottom:.1rem; }
-    .sideItem span{ color: var(--muted); font-size:.95rem; }
+    .benefit strong{ display:block; margin-bottom:.12rem; }
+    .benefit span{ color: var(--muted); }
 
-    .formWrap{
-      border-top: 1px dashed rgba(255,255,255,.14);
-      margin-top: 1rem;
-      padding-top: 1rem;
+    .divider{
+      border-top: 1px dashed rgba(255,255,255,.16);
+      margin: .9rem 0;
     }
-    .grid2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:.65rem;
-    }
-    label{ display:block; font-size:.9rem; color: var(--muted); margin-bottom:.35rem; }
+
+    /* Form (modern) */
+    form{ margin:0; }
+    label{ display:block; color: var(--muted); font-weight:650; font-size:.9rem; margin: .15rem 0 .35rem; }
     input, select, textarea{
       width:100%;
-      border-radius: 14px;
+      border-radius: var(--r16);
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.18);
       color: var(--text);
-      padding: .8rem .85rem;
+      padding: .82rem .88rem;
       min-height: 44px;
-      outline: none;
+      outline:none;
+      transition: box-shadow .16s ease, border-color .16s ease, background .16s ease;
     }
-    textarea{ min-height: 92px; resize: vertical; }
-    input:focus, select:focus, textarea:focus{ box-shadow: var(--focus); border-color: rgba(125,211,252,.35); }
-    .small{
-      font-size:.88rem; color: var(--muted);
-      margin: .55rem 0 0;
+    input:focus, select:focus, textarea:focus{
+      box-shadow: var(--focus);
+      border-color: rgba(125,211,252,.30);
+      background: rgba(0,0,0,.24);
     }
+    textarea{ min-height: 96px; resize: vertical; }
+    .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap:.7rem; }
+    .hint{ margin:.55rem 0 0; color: var(--muted2); font-size:.9rem; }
     .notice{
       display:none;
       margin-top:.75rem;
-      padding:.75rem;
-      border-radius: 14px;
-      border: 1px solid rgba(52,211,153,.28);
+      padding:.8rem .9rem;
+      border-radius: var(--r16);
+      border: 1px solid rgba(52,211,153,.26);
       background: rgba(52,211,153,.10);
-      color: rgba(255,255,255,.86);
+      color: rgba(255,255,255,.88);
     }
     .notice.err{
-      border-color: rgba(251,113,133,.35);
+      border-color: rgba(251,113,133,.30);
       background: rgba(251,113,133,.12);
     }
 
     /* Sections */
-    section{ padding: 2.3rem 0; }
+    section{ padding: 2.4rem 0; }
     .sectionHead{
       display:flex;
       align-items:flex-end;
@@ -308,208 +394,174 @@
     }
     h2{
       margin:0;
-      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
-      letter-spacing:-.2px;
+      font-size: clamp(1.4rem, 2.6vw, 1.95rem);
+      letter-spacing: -0.35px;
     }
-    .subhead{ margin:0; color: var(--muted); max-width: 75ch; }
-    .cards{
+    .subhead{ margin:.35rem 0 0; color: var(--muted); max-width: 80ch; }
+
+    .grid3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
     }
+
     .card{
-      border-radius: var(--radius);
-      border: 1px solid var(--subtle);
-      background: rgba(255,255,255,.05);
-      padding: 1rem;
-      box-shadow: 0 12px 28px rgba(0,0,0,.25);
+      border-radius: var(--r28);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow2);
+      padding: 1.05rem 1.05rem;
+      position:relative;
+      overflow:hidden;
+      transition: transform .16s ease, background .16s ease, border-color .16s ease;
     }
-    .card h3{ margin:0 0 .45rem; font-size: 1.05rem; }
+    .card:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.055);
+      border-color: rgba(255,255,255,.16);
+    }
+    .card h3{ margin:0 0 .45rem; font-size: 1.05rem; letter-spacing:-.15px; }
     .card p{ margin:0; color: var(--muted); }
 
-    /* Curriculum */
-    .timeline{
-      display:grid;
-      gap:.9rem;
-    }
-    .step{
-      display:flex;
-      gap:.9rem;
-      padding: 1rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--subtle);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
-    }
-    .stepNum{
-      width:42px; height:42px;
+    .iconBadge{
+      width:40px; height:40px;
       border-radius: 16px;
       display:grid; place-items:center;
-      border: 1px solid rgba(125,211,252,.28);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.14);
+      margin-bottom:.75rem;
+    }
+    .iconBadge svg{ width:20px; height:20px; opacity:.9; }
+
+    /* Curriculum timeline */
+    .timeline{ display:grid; gap:.85rem; }
+    .step{
+      display:grid;
+      grid-template-columns: 46px 1fr;
+      gap:.85rem;
+      padding: 1rem;
+      border-radius: var(--r28);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow2);
+    }
+    .num{
+      width:46px; height:46px;
+      border-radius: 18px;
+      display:grid; place-items:center;
+      border: 1px solid rgba(125,211,252,.26);
       background: rgba(125,211,252,.10);
-      color: rgba(255,255,255,.9);
-      font-weight:800;
-      flex: 0 0 auto;
+      font-weight: 900;
     }
     .step p{ margin:.25rem 0 0; color: var(--muted); }
-    .chips{
-      display:flex; flex-wrap:wrap; gap:.5rem;
-      margin-top:.7rem;
-    }
+    .chips{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.7rem; }
     .chip{
-      padding:.45rem .6rem;
+      padding:.45rem .65rem;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.14);
       color: var(--muted);
+      font-weight:650;
       font-size:.88rem;
       white-space:nowrap;
     }
 
-    /* Video placeholder */
-    .media{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 1rem;
-      align-items:stretch;
-    }
-    .video{
-      border-radius: var(--radius2);
-      border: 1px solid var(--subtle);
-      background:
-        radial-gradient(900px 360px at 35% 30%, rgba(125,211,252,.22), transparent 58%),
-        radial-gradient(700px 420px at 70% 35%, rgba(167,139,250,.18), transparent 55%),
-        rgba(255,255,255,.05);
-      min-height: 280px;
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .videoInner{
-      position:absolute; inset: 0;
-      display:grid; place-items:center;
-      padding: 1.2rem;
-      text-align:center;
-    }
-    .play{
-      width:76px; height:76px;
-      border-radius: 28px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.18);
-      display:grid; place-items:center;
-      margin: 0 auto .8rem;
-      box-shadow: 0 18px 35px rgba(0,0,0,.35);
-    }
-    .play svg{ width:28px; height:28px; }
-    .video small{ color: var(--muted); }
-
-    /* Testimonials */
-    .quotes{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    blockquote{
-      margin:0;
-      padding: 1rem;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-    }
-    blockquote p{ margin:0 0 .8rem; color: rgba(255,255,255,.86); }
-    blockquote footer{ color: var(--muted); font-size:.92rem; }
+    /* Split */
+    .split{ display:grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
     /* FAQ */
     details{
-      border-radius: var(--radius);
+      border-radius: var(--r20);
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.04);
-      padding: .85rem 1rem;
+      padding: .9rem 1rem;
+      box-shadow: var(--shadow2);
     }
     details + details{ margin-top:.75rem; }
     summary{
       cursor:pointer;
-      font-weight:700;
+      font-weight: 800;
       list-style:none;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      display:flex; justify-content:space-between; align-items:center;
       gap:1rem;
     }
     summary::-webkit-details-marker{ display:none; }
-    .faqBody{ color: var(--muted); margin-top: .6rem; }
+    .faqBody{ margin-top:.6rem; color: var(--muted); }
 
     /* Footer */
     footer{
-      border-top: 1px solid var(--subtle);
-      padding: 1.6rem 0 2rem;
+      padding: 1.9rem 0 2.4rem;
+      border-top: 1px solid rgba(255,255,255,.10);
       color: var(--muted);
     }
-    .footGrid{
+    .foot{
       display:grid;
       grid-template-columns: 1.2fr .8fr;
-      gap: 1rem;
+      gap:1rem;
       align-items:start;
     }
-    .footCard{
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.04);
+
+    .mini{
+      border-radius: var(--r28);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
       padding: 1rem;
     }
-    .footCard strong{ color: rgba(255,255,255,.88); }
-    .footLinks a{ display:inline-block; margin-right:.85rem; margin-top:.4rem; }
-    .footLinks a:hover{ color: var(--text); text-decoration:underline; text-underline-offset:3px; }
+    .mini strong{ color: rgba(255,255,255,.88); }
+    .linksRow a{
+      display:inline-block;
+      margin-right:.85rem;
+      margin-top:.45rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .linksRow a:hover{ color: var(--text); text-decoration:underline; text-underline-offset:3px; }
 
     /* Sticky mobile CTA */
-    .stickyCta{
+    .sticky{
       display:none;
       position:fixed; left:0; right:0; bottom:0; z-index:60;
-      padding: .75rem 1rem;
-      background: rgba(11,18,32,.82);
-      backdrop-filter: blur(10px);
+      padding: .8rem 1rem;
+      background: rgba(7,10,18,.62);
+      backdrop-filter: blur(14px);
       border-top: 1px solid rgba(255,255,255,.12);
     }
-    .stickyRow{
-      display:flex; gap:.75rem;
+    .sticky .row{
       width:min(var(--max), calc(100% - 0rem));
       margin:0 auto;
+      display:flex; gap:.7rem;
     }
-    .stickyRow .btn{ flex:1; border-radius: 16px; }
+    .sticky .row .btn{ flex:1; border-radius: 18px; }
 
-    /* Utilities */
-    .muted{ color: var(--muted); }
-    .split{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      align-items:start;
+    /* Motion */
+    @media (prefers-reduced-motion: no-preference){
+      .fadeUp{
+        opacity:0;
+        transform: translateY(10px);
+        transition: opacity .55s ease, transform .55s ease;
+      }
+      .fadeUp.in{
+        opacity:1;
+        transform: translateY(0);
+      }
     }
 
     /* Responsive */
     @media (max-width: 980px){
       .heroGrid{ grid-template-columns: 1fr; }
-      .media{ grid-template-columns: 1fr; }
-      .cards{ grid-template-columns: 1fr; }
-      .quotes{ grid-template-columns: 1fr; }
-      .footGrid{ grid-template-columns: 1fr; }
-      .navlinks{ display:none; }
+      .grid3{ grid-template-columns: 1fr; }
+      .split{ grid-template-columns: 1fr; }
+      .links{ display:none; }
       .menuBtn{ display:inline-flex; }
-      .stickyCta{ display:block; }
+      .sticky{ display:block; }
+      .foot{ grid-template-columns: 1fr; }
     }
     @media (max-width: 520px){
       .grid2{ grid-template-columns: 1fr; }
-      .hero{ padding-top: 2.2rem; }
       .pill{ width:100%; justify-content:flex-start; }
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      html{ scroll-behavior:auto; }
-      .cta:hover{ transform:none; }
     }
   </style>
 
-  <!-- Structured data: Course -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -526,39 +578,39 @@
 </head>
 
 <body>
+  <div class="noise" aria-hidden="true"></div>
   <a class="skip" href="#main">Skip to content</a>
 
   <header>
     <div class="container">
       <div class="nav" role="navigation" aria-label="Primary">
         <a class="brand" href="#top" aria-label="Iridescent Dental Academy home">
-          <span class="logo" aria-hidden="true"></span>
-          <span>Iridescent Dental Academy</span>
+          <span class="mark" aria-hidden="true"></span>
+          <span>
+            Iridescent Dental Academy
+            <small>Composite Veneer Masterclass</small>
+          </span>
         </a>
 
-        <nav class="navlinks" aria-label="Page sections">
+        <nav class="links" aria-label="Page sections">
           <a href="#overview">Overview</a>
           <a href="#curriculum">Curriculum</a>
-          <a href="#fit">Is this for you?</a>
+          <a href="#fit">Fit</a>
           <a href="#faq">FAQ</a>
           <a href="#contact">Contact</a>
         </nav>
 
-        <div style="display:flex; gap:.6rem; align-items:center;">
-          <button class="menuBtn" id="menuBtn" aria-expanded="false" aria-controls="mobilePanel">
-            Menu
-          </button>
-          <a class="cta" href="#enquire" aria-label="Jump to enquiry form">
-            <span aria-hidden="true">Enquire</span>
-            <span aria-hidden="true">→</span>
-          </a>
+        <div class="actions">
+          <button class="menuBtn" id="menuBtn" aria-expanded="false" aria-controls="mobilePanel">Menu</button>
+          <a class="btn btnGhost" href="https://drcharlesbrandon.com/dentists/" target="_blank" rel="noopener">Source</a>
+          <a class="btn btnPrimary" href="#enquire">Enquire →</a>
         </div>
       </div>
 
       <div class="mobilePanel" id="mobilePanel" aria-label="Mobile navigation">
         <a href="#overview">Overview</a>
         <a href="#curriculum">Curriculum</a>
-        <a href="#fit">Is this for you?</a>
+        <a href="#fit">Fit</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </div>
@@ -569,103 +621,99 @@
     <div id="top" class="hero">
       <div class="container">
         <div class="heroGrid">
-          <div>
+          <div class="fadeUp">
             <div class="kicker">
-              <span class="dot" aria-hidden="true"></span>
+              <span class="pulse" aria-hidden="true"></span>
               <span>For dentists • Advanced, hands-on training</span>
             </div>
 
-            <h1>Composite Veneer Masterclass</h1>
+            <h1><span class="grad">Predictable</span> composite veneers, taught as a repeatable workflow.</h1>
+
             <p class="lead">
-              A practical, workflow-driven program built to help you deliver consistent, high-quality composite veneer outcomes—
-              from smile design through finishing and patient communication.
+              A modern, clinician-first masterclass focused on planning, layering, texture and finishing—plus
+              how to document and communicate outcomes with confidence.
             </p>
 
             <div class="heroActions">
-              <a class="btn btnPrimary" href="#enquire">
-                Request dates & fees <span aria-hidden="true">→</span>
-              </a>
-              <a class="btn" href="#curriculum">
-                See curriculum
-              </a>
-              <a class="btn" href="https://drcharlesbrandon.com/dentists/" target="_blank" rel="noopener">
-                View original page
-              </a>
+              <a class="btn btnPrimary" href="#enquire">Request dates & fees →</a>
+              <a class="btn" href="#curriculum">View curriculum</a>
+              <a class="btn btnGhost" href="#overview">What you’ll learn</a>
             </div>
 
-            <div class="metaRow" aria-label="Key course facts">
-              <div class="pill">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M7 3v3m10-3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <div class="meta" aria-label="Key course facts">
+              <span class="pill">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 3v3m10-3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
                 </svg>
                 4-day intensive format
-              </div>
-              <div class="pill">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 20a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M12 10v4l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </span>
+              <span class="pill">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 20a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z" stroke="currentColor" stroke-width="1.7"/>
+                  <path d="M12 10v4l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
                 </svg>
-                Practical build + polish focus
-              </div>
-              <div class="pill">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 21s7-4.4 7-10.5A4.5 4.5 0 0 0 14.5 6C13 6 12 7 12 7s-1-1-2.5-1A4.5 4.5 0 0 0 5 10.5C5 16.6 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                Build + finish emphasis
+              </span>
+              <span class="pill">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 21s7-4.4 7-10.5A4.5 4.5 0 0 0 14.5 6C13 6 12 7 12 7s-1-1-2.5-1A4.5 4.5 0 0 0 5 10.5C5 16.6 12 21 12 21Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
                 </svg>
-                Aesthetic-driven, repeatable workflow
-              </div>
+                Aesthetic-driven workflow
+              </span>
             </div>
 
-            <p class="small">
-              Note: This landing page is an experience-optimised redesign inspired by the source content.
-              For official details, refer to the original.
+            <p class="hint">
+              This is a modernised landing-page build. For official details, always verify via the source page.
             </p>
           </div>
 
-          <aside class="sideCard" aria-label="Fast enquiry panel">
-            <div class="sideTop">
-              <p class="sideTitle">What you’ll leave with</p>
-              <span class="badge">Clinician-focused</span>
+          <aside class="glass side fadeUp" aria-label="Fast enquiry panel">
+            <div class="sideHead">
+              <h3>Fast enquiry</h3>
+              <span class="tag">Clinician-focused</span>
             </div>
 
-            <div class="sideList">
-              <div class="sideItem">
-                <div class="check" aria-hidden="true">
+            <div class="benefits" aria-label="Course outcomes">
+              <div class="benefit">
+                <div class="tick" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
-                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
                 <div>
-                  <strong>Chairside workflow</strong>
-                  <span>Design → placement → finishing, structured so you can repeat it.</span>
+                  <strong>Chairside sequence</strong>
+                  <span>Plan → place → finish, built for repeatability.</span>
                 </div>
               </div>
 
-              <div class="sideItem">
-                <div class="check" aria-hidden="true">
+              <div class="benefit">
+                <div class="tick" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
-                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
                 <div>
-                  <strong>Real-world finishing</strong>
-                  <span>Layering, texture and polish protocols for a natural look.</span>
+                  <strong>Texture + gloss control</strong>
+                  <span>Layering, anatomy, and a reliable polishing protocol.</span>
                 </div>
               </div>
 
-              <div class="sideItem">
-                <div class="check" aria-hidden="true">
+              <div class="benefit">
+                <div class="tick" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
-                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
                 <div>
-                  <strong>Patient communication</strong>
-                  <span>Photography and presentation to support confident case acceptance.</span>
+                  <strong>Communication</strong>
+                  <span>Photography and presentation for case acceptance.</span>
                 </div>
               </div>
             </div>
 
-            <div class="formWrap" id="enquire">
+            <div class="divider" aria-hidden="true"></div>
+
+            <div id="enquire">
               <form id="leadForm" novalidate>
                 <div class="grid2">
                   <div>
@@ -678,11 +726,11 @@
                   </div>
                 </div>
 
-                <div class="grid2" style="margin-top:.65rem;">
+                <div class="grid2" style="margin-top:.7rem;">
                   <div>
-                    <label for="exp">Experience level</label>
+                    <label for="exp">Experience</label>
                     <select id="exp" name="exp" required>
-                      <option value="" selected disabled>Select one</option>
+                      <option value="" selected disabled>Select</option>
                       <option>New to composite veneers</option>
                       <option>Some cases completed</option>
                       <option>Regularly placing composites</option>
@@ -690,28 +738,28 @@
                     </select>
                   </div>
                   <div>
-                    <label for="interest">Primary interest</label>
+                    <label for="interest">Primary focus</label>
                     <select id="interest" name="interest" required>
-                      <option value="" selected disabled>Select one</option>
+                      <option value="" selected disabled>Select</option>
                       <option>Layering & anatomy</option>
                       <option>Polishing & finishing</option>
                       <option>Smile design & planning</option>
-                      <option>Full workflow + marketing</option>
+                      <option>Workflow + documentation</option>
                     </select>
                   </div>
                 </div>
 
-                <div style="margin-top:.65rem;">
+                <div style="margin-top:.7rem;">
                   <label for="msg">Question (optional)</label>
                   <textarea id="msg" name="msg" placeholder="E.g., dates, fees, prerequisites, kit list, location."></textarea>
                 </div>
 
-                <button class="btn btnPrimary" style="width:100%; margin-top:.8rem;" type="submit">
-                  Send enquiry <span aria-hidden="true">→</span>
+                <button class="btn btnPrimary" style="width:100%; margin-top:.85rem;" type="submit">
+                  Send enquiry →
                 </button>
 
-                <p class="small">
-                  This demo form does not send email. It creates a ready-to-send message you can copy into your email client.
+                <p class="hint">
+                  Demo behaviour: opens your email client with a pre-filled message (no server required).
                 </p>
 
                 <div class="notice" id="notice" role="status" aria-live="polite"></div>
@@ -724,104 +772,66 @@
 
     <section id="overview">
       <div class="container">
-        <div class="sectionHead">
+        <div class="sectionHead fadeUp">
           <div>
             <h2>Overview</h2>
             <p class="subhead">
-              Built for clinicians who want a practical, confidence-building approach—prioritising hands-on work and
-              a predictable aesthetic protocol.
+              Designed for clinicians who want a practical, confidence-building pathway to consistent anterior aesthetics.
             </p>
           </div>
         </div>
 
-        <div class="cards" role="list">
-          <div class="card" role="listitem">
-            <h3>High practical intensity</h3>
-            <p>
-              The core emphasis is on doing: design, placement and finishing steps are rehearsed in sequence so your
-              workflow remains consistent under time pressure.
-            </p>
-          </div>
-          <div class="card" role="listitem">
-            <h3>End-to-end smile design</h3>
-            <p>
-              Plan cases with photography and digital planning principles, then translate those decisions to chairside
-              anatomy, texture and polish.
-            </p>
-          </div>
-          <div class="card" role="listitem">
-            <h3>Clinic-ready communication</h3>
-            <p>
-              Practical guidance on presenting cases, managing expectations, and documenting outcomes to support ethical,
-              patient-led decision-making.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section aria-label="Media and quick explanation">
-      <div class="container">
-        <div class="media">
-          <div class="video" aria-label="Course video placeholder">
-            <div class="videoInner">
-              <div class="play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M9 8.5v7l7-3.5-7-3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                  <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" stroke="currentColor" stroke-width="1.8"/>
-                </svg>
-              </div>
-              <strong style="font-size:1.05rem;">Add your video embed here</strong>
-              <small>(Use your preferred host; keep autoplay off for better UX.)</small>
+        <div class="grid3" role="list">
+          <article class="card fadeUp" role="listitem">
+            <div class="iconBadge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
             </div>
-          </div>
+            <h3>Practical intensity</h3>
+            <p>Drills and sequence-based repetition so your workflow remains stable under clinical time pressure.</p>
+          </article>
 
-          <div class="card" style="border-radius: var(--radius2); padding:1.2rem;">
-            <h3 style="margin:0 0 .35rem;">What the 4 days typically cover</h3>
-            <p class="muted" style="margin:0;">
-              This redesign consolidates the key themes from the source page into a clearer journey: plan → build → finish →
-              document and present.
-            </p>
-
-            <div class="chips" aria-label="Topics">
-              <span class="chip">Photography fundamentals</span>
-              <span class="chip">Digital planning concepts</span>
-              <span class="chip">Try-in & patient alignment</span>
-              <span class="chip">Soft tissue considerations</span>
-              <span class="chip">Placement & layering</span>
-              <span class="chip">Texture & gloss control</span>
-              <span class="chip">Ethical marketing & case presentation</span>
+          <article class="card fadeUp" role="listitem">
+            <div class="iconBadge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 18c3-6 13-6 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M7 10c1.5-2 3-3 5-3s3.5 1 5 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
             </div>
+            <h3>Smile design translation</h3>
+            <p>Turn planning decisions into chairside anatomy, proportions, texture and gloss control.</p>
+          </article>
 
-            <p class="small" style="margin-top:1rem;">
-              Tip: Keep a downloadable “course pack” (schedule, prerequisites, kit list, FAQs) on this page to reduce
-              back-and-forth and improve conversion.
-            </p>
-          </div>
+          <article class="card fadeUp" role="listitem">
+            <div class="iconBadge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M5 5h4M15 19h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Documentation & presentation</h3>
+            <p>Photography and case presentation principles to support ethical, patient-led treatment decisions.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="curriculum">
       <div class="container">
-        <div class="sectionHead">
+        <div class="sectionHead fadeUp">
           <div>
-            <h2>Curriculum</h2>
-            <p class="subhead">
-              A practical pathway that mirrors real clinical flow—so each stage sets up the next.
-            </p>
+            <h2>Curriculum pathway</h2>
+            <p class="subhead">Structured around real clinical flow: plan → align → build → finish → document.</p>
           </div>
         </div>
 
         <div class="timeline">
-          <div class="step">
-            <div class="stepNum">1</div>
+          <div class="step fadeUp">
+            <div class="num">1</div>
             <div>
-              <strong>Case capture & planning</strong>
-              <p>
-                Standardised photo capture, planning fundamentals and translating aesthetic goals into practical
-                chairside decisions.
-              </p>
+              <strong>Capture & plan</strong>
+              <p>Photography fundamentals, planning principles, shade strategy and translating goals into predictable steps.</p>
               <div class="chips">
                 <span class="chip">Photography</span>
                 <span class="chip">Planning principles</span>
@@ -830,62 +840,50 @@
             </div>
           </div>
 
-          <div class="step">
-            <div class="stepNum">2</div>
+          <div class="step fadeUp">
+            <div class="num">2</div>
             <div>
-              <strong>Smile trial & expectation management</strong>
-              <p>
-                Establish patient alignment early—what is achievable, what is stable long-term, and how to sequence
-                cases responsibly.
-              </p>
+              <strong>Expectation alignment</strong>
+              <p>Case selection, consent language, and communication that sets realistic outcomes from the start.</p>
               <div class="chips">
-                <span class="chip">Try-in workflow</span>
-                <span class="chip">Consent language</span>
                 <span class="chip">Case selection</span>
+                <span class="chip">Try-in mindset</span>
+                <span class="chip">Consent</span>
               </div>
             </div>
           </div>
 
-          <div class="step">
-            <div class="stepNum">3</div>
+          <div class="step fadeUp">
+            <div class="num">3</div>
             <div>
-              <strong>Preparation and soft-tissue considerations</strong>
-              <p>
-                Conservative preparation choices where appropriate and soft-tissue factors that influence aesthetics,
-                proportions and symmetry.
-              </p>
+              <strong>Prep, isolation, tissue</strong>
+              <p>Conservative prep decisions where appropriate, isolation, and soft-tissue considerations that affect aesthetics.</p>
               <div class="chips">
-                <span class="chip">Margin control</span>
-                <span class="chip">Pink aesthetics</span>
                 <span class="chip">Isolation</span>
+                <span class="chip">Margins</span>
+                <span class="chip">Pink aesthetics</span>
               </div>
             </div>
           </div>
 
-          <div class="step">
-            <div class="stepNum">4</div>
+          <div class="step fadeUp">
+            <div class="num">4</div>
             <div>
-              <strong>Placement, layering, texture and polish</strong>
-              <p>
-                A repeatable protocol for anatomy and surface characteristics so restorations read “natural” across
-                varying smile types and lighting.
-              </p>
+              <strong>Layer, shape, finish</strong>
+              <p>Protocols for anatomy, texture and polish to achieve a natural appearance in varied lighting conditions.</p>
               <div class="chips">
                 <span class="chip">Layering</span>
-                <span class="chip">Macro/micro-texture</span>
+                <span class="chip">Texture</span>
                 <span class="chip">Polish systems</span>
               </div>
             </div>
           </div>
 
-          <div class="step">
-            <div class="stepNum">5</div>
+          <div class="step fadeUp">
+            <div class="num">5</div>
             <div>
-              <strong>Documentation and ethical promotion</strong>
-              <p>
-                Presenting outcomes clearly, tracking consistency over time and building patient trust with accurate,
-                responsible communication.
-              </p>
+              <strong>Document & communicate</strong>
+              <p>Before/after standards, case narratives and responsible promotion aligned with patient trust.</p>
               <div class="chips">
                 <span class="chip">Before/after standards</span>
                 <span class="chip">Case narratives</span>
@@ -899,154 +897,96 @@
 
     <section id="fit">
       <div class="container">
-        <div class="sectionHead">
+        <div class="sectionHead fadeUp">
           <div>
-            <h2>Is this for you?</h2>
-            <p class="subhead">
-              This is positioned as advanced, intensive training. If you are very new, you may prefer a fundamentals course first.
-            </p>
+            <h2>Fit check</h2>
+            <p class="subhead">Advanced, intensive training. If you are brand new, a fundamentals course may be a better first step.</p>
           </div>
         </div>
 
         <div class="split">
-          <div class="card">
+          <div class="card fadeUp">
             <h3>Best fit if you:</h3>
-            <p class="muted" style="margin:0;">
-              Want to refine an existing skill set into a more predictable, aesthetic-driven workflow.
-            </p>
-            <ul class="muted" style="margin:.85rem 0 0; padding-left: 1.1rem;">
-              <li>Have placed composite restorations and want stronger smile-design translation.</li>
+            <p class="subhead" style="margin-top:.4rem;">Want to make your results more predictable and more aesthetic, consistently.</p>
+            <ul class="subhead" style="margin:.9rem 0 0; padding-left: 1.1rem;">
+              <li>Have placed composites and want stronger anterior aesthetics.</li>
               <li>Want repeatable finishing, texture and gloss control.</li>
-              <li>Prefer hands-on, clinically relevant drills over theory-heavy teaching.</li>
+              <li>Prefer hands-on, workflow-oriented training.</li>
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card fadeUp">
             <h3>Consider another route if you:</h3>
-            <p class="muted" style="margin:0;">
-              Are looking for a first introduction to composite veneers.
-            </p>
-            <ul class="muted" style="margin:.85rem 0 0; padding-left: 1.1rem;">
-              <li>Have never layered composites or built anterior anatomy.</li>
-              <li>Need fundamentals of isolation, bonding and incremental build-up.</li>
-              <li>Prefer a slower pace with more introductory demos.</li>
+            <p class="subhead" style="margin-top:.4rem;">Need a slower introduction to core composite and bonding fundamentals.</p>
+            <ul class="subhead" style="margin:.9rem 0 0; padding-left: 1.1rem;">
+              <li>Have never layered anterior composites.</li>
+              <li>Need foundational isolation and incremental build-up teaching.</li>
+              <li>Prefer a theory-first pace.</li>
             </ul>
-            <p class="small" style="margin-top:.85rem;">
-              If you are unsure, request guidance via the enquiry form—include your typical case mix and experience level.
-            </p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section aria-label="Testimonials">
-      <div class="container">
-        <div class="sectionHead">
-          <div>
-            <h2>What clinicians value</h2>
-            <p class="subhead">Use real testimonials here (with permission). These samples are placeholders.</p>
-          </div>
-        </div>
-
-        <div class="quotes">
-          <blockquote>
-            <p>“The finishing protocol alone improved my consistency. The structure made it easy to implement on Monday.”</p>
-            <footer>Associate Dentist • Cosmetic focus</footer>
-          </blockquote>
-          <blockquote>
-            <p>“Practical, not abstract. The smile design decisions finally translated into what I do chairside.”</p>
-            <footer>Practice Owner • Mixed NHS/Private</footer>
-          </blockquote>
         </div>
       </div>
     </section>
 
     <section id="faq">
       <div class="container">
-        <div class="sectionHead">
+        <div class="sectionHead fadeUp">
           <div>
             <h2>FAQ</h2>
-            <p class="subhead">Reduce friction by answering common questions directly on the page.</p>
+            <p class="subhead">Answer the questions that typically create delays in booking.</p>
           </div>
         </div>
 
-        <details>
-          <summary>
-            Is this course suitable for beginners?
-            <span aria-hidden="true">+</span>
-          </summary>
+        <details class="fadeUp">
+          <summary>Is this suitable for beginners? <span aria-hidden="true">+</span></summary>
           <div class="faqBody">
-            It is designed as advanced, intensive training. If you are completely new to composite veneers,
-            you may find the pace challenging; consider fundamentals training first.
+            It is positioned as advanced, intensive training. If you are completely new to composite veneers, a fundamentals course may be more suitable first.
           </div>
         </details>
 
-        <details>
-          <summary>
-            What should I bring?
-            <span aria-hidden="true">+</span>
-          </summary>
+        <details class="fadeUp">
+          <summary>What should I bring? <span aria-hidden="true">+</span></summary>
           <div class="faqBody">
-            Publish a kit list in a downloadable PDF (recommended), and include any brand-agnostic requirements such as
-            loupes, preferred hand instruments, and photo setup (if applicable).
+            In production, provide a downloadable kit list and prerequisites (loupes, instruments, photo setup if applicable) to reduce back-and-forth.
           </div>
         </details>
 
-        <details>
-          <summary>
-            How do I secure a place?
-            <span aria-hidden="true">+</span>
-          </summary>
+        <details class="fadeUp">
+          <summary>How do I secure a place? <span aria-hidden="true">+</span></summary>
           <div class="faqBody">
-            Add a clear “Reserve” step: enquiry → confirmation of dates/fees → deposit/payment link. Where possible,
-            use an online booking/payment page to minimise delays.
-          </div>
-        </details>
-
-        <details>
-          <summary>
-            Can I get advice on whether I’m a good fit?
-            <span aria-hidden="true">+</span>
-          </summary>
-          <div class="faqBody">
-            Yes—share your experience level, the types of cases you do, and what you want to improve. You can include
-            a question in the enquiry form on this page.
+            A simple flow reduces drop-off: enquiry → confirmation of dates/fees → deposit/payment link. If possible, add an online booking/payment step.
           </div>
         </details>
       </div>
     </section>
 
-    <section id="contact" aria-label="Contact details">
+    <section id="contact">
       <div class="container">
-        <div class="sectionHead">
+        <div class="sectionHead fadeUp">
           <div>
             <h2>Contact</h2>
-            <p class="subhead">
-              Quick contact options reduce drop-off. Keep these consistent with your official pages.
-            </p>
+            <p class="subhead">Keep your primary contact routes visible and consistent with official pages.</p>
           </div>
         </div>
 
         <div class="split">
-          <div class="card">
+          <div class="card fadeUp">
             <h3>Direct</h3>
-            <p class="muted" style="margin:.15rem 0 0;">
-              Phone: <a class="uline" href="tel:+447542164798">07542 164798</a><br/>
-              Email: <a class="uline" href="mailto:enquiries@drcharlesbrandon.com">enquiries@drcharlesbrandon.com</a><br/>
-              Instagram: <a class="uline" href="https://www.instagram.com/charlesmbrandon/?hl=en-gb" target="_blank" rel="noopener">charlesmbrandon</a>
+            <p class="subhead" style="margin-top:.5rem;">
+              Phone: <a href="tel:+447542164798" style="text-decoration:underline; text-underline-offset:3px;">07542 164798</a><br/>
+              Email: <a href="mailto:enquiries@drcharlesbrandon.com" style="text-decoration:underline; text-underline-offset:3px;">enquiries@drcharlesbrandon.com</a><br/>
+              Instagram: <a href="https://www.instagram.com/charlesmbrandon/?hl=en-gb" target="_blank" rel="noopener" style="text-decoration:underline; text-underline-offset:3px;">charlesmbrandon</a>
             </p>
-            <p class="small" style="margin-top:.9rem;">
-              Opening hours (as published on the contact page): Monday–Friday, 08:30–17:30.
-            </p>
+            <p class="hint" style="margin-top:1rem;">Opening hours (as published on the contact page): Monday–Friday, 08:30–17:30.</p>
           </div>
 
-          <div class="card">
-            <h3>UX enhancements to consider</h3>
-            <ul class="muted" style="margin:.85rem 0 0; padding-left: 1.1rem;">
-              <li>Offer a “Download course pack” button above the fold.</li>
-              <li>Add clear dates, location, cohort size, and CPD details (if applicable).</li>
-              <li>Include a simple calendar link or booking flow to reduce email ping-pong.</li>
-              <li>Show “What happens next” after enquiry (response time, steps, payment).</li>
+          <div class="card fadeUp">
+            <h3>High-impact upgrades</h3>
+            <ul class="subhead" style="margin:.85rem 0 0; padding-left: 1.1rem;">
+              <li>Add a “Download course pack” (schedule, kit list, FAQs).</li>
+              <li>Publish dates, location, cohort size, and CPD details (if applicable).</li>
+              <li>Add “What happens next” after enquiry (response time, steps, payment).</li>
+              <li>Replace generic testimonials with verified quotes (with permission).</li>
             </ul>
           </div>
         </div>
@@ -1056,35 +996,31 @@
 
   <footer>
     <div class="container">
-      <div class="footGrid">
-        <div class="footCard">
+      <div class="foot">
+        <div class="mini">
           <strong>Implementation note</strong>
-          <p style="margin:.45rem 0 0;">
-            To make this production-ready, wire the form to your backend (or a CRM like HubSpot), add real testimonials,
-            publish dates/fees, and replace the video placeholder with your embed.
+          <p style="margin:.55rem 0 0;">
+            To productionise: wire the form to a CRM/backend, add a privacy policy + consent, publish dates/fees, and replace placeholders with official assets.
           </p>
         </div>
 
-        <div class="footCard">
+        <div class="mini">
           <strong>Quick links</strong>
-          <div class="footLinks">
+          <div class="linksRow">
             <a href="#enquire">Enquire</a>
             <a href="#curriculum">Curriculum</a>
             <a href="https://drcharlesbrandon.com/dentists/" target="_blank" rel="noopener">Source page</a>
             <a href="https://drcharlesbrandon.com/contact/" target="_blank" rel="noopener">Official contact</a>
           </div>
-          <p class="small" style="margin-top:.9rem;">
-            © <span id="year"></span> Iridescent Dental Academy (demo page)
-          </p>
+          <p class="hint" style="margin-top:.9rem;">© <span id="year"></span> (demo page)</p>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Sticky CTA for mobile -->
-  <div class="stickyCta" role="region" aria-label="Quick actions">
-    <div class="stickyRow">
-      <a class="btn btnPrimary" href="#enquire">Enquire</a>
+  <div class="sticky" role="region" aria-label="Quick actions">
+    <div class="row">
+      <a class="btn btnPrimary" href="#enquire">Enquire →</a>
       <a class="btn" href="tel:+447542164798">Call</a>
     </div>
   </div>
@@ -1102,7 +1038,6 @@
         panel.style.display = expanded ? 'none' : 'block';
       });
 
-      // Close menu on navigation
       panel.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', () => {
           btn.setAttribute('aria-expanded', 'false');
@@ -1114,7 +1049,7 @@
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Form: validate + generate mailto (demo UX that avoids a dead-end form)
+    // Form: validate + open mail client (no backend required)
     (function () {
       const form = document.getElementById('leadForm');
       const notice = document.getElementById('notice');
@@ -1132,44 +1067,41 @@
         e.preventDefault();
 
         const data = new FormData(form);
-        const name = (data.get('name') || '').toString().trim();
-        const email = (data.get('email') || '').toString().trim();
-        const exp = (data.get('exp') || '').toString().trim();
-        const interest = (data.get('interest') || '').toString().trim();
-        const msg = (data.get('msg') || '').toString().trim();
+        const name = String(data.get('name') || '').trim();
+        const email = String(data.get('email') || '').trim();
+        const exp = String(data.get('exp') || '').trim();
+        const interest = String(data.get('interest') || '').trim();
+        const msg = String(data.get('msg') || '').trim();
 
         if (!name) return show('Please add your name.', true);
         if (!isEmail(email)) return show('Please enter a valid email address.', true);
         if (!exp) return show('Please select your experience level.', true);
-        if (!interest) return show('Please select your primary interest.', true);
+        if (!interest) return show('Please select your primary focus.', true);
 
-        // Store locally (helps returning users; GDPR note: only for demo; add consent + privacy policy in production)
+        // Optional: store locally for convenience (add consent + privacy policy in production)
         try {
           localStorage.setItem('iridescent_lead', JSON.stringify({ name, email, exp, interest, msg, ts: Date.now() }));
         } catch (_) {}
 
         const subject = encodeURIComponent('Enquiry: Composite Veneer Masterclass');
-        const bodyLines = [
+        const body = encodeURIComponent([
           'Hello,',
           '',
-          'I would like information on the Composite Veneer Masterclass (dates, fees, and prerequisites).',
+          'I would like information on the Composite Veneer Masterclass (dates, fees, prerequisites and kit list).',
           '',
           `Name: ${name}`,
           `Email: ${email}`,
           `Experience: ${exp}`,
-          `Primary interest: ${interest}`,
+          `Primary focus: ${interest}`,
           msg ? `Question: ${msg}` : 'Question: (none)',
           '',
           'Thank you.'
-        ];
-        const body = encodeURIComponent(bodyLines.join('\n'));
+        ].join('\n'));
 
         const mailto = `mailto:enquiries@drcharlesbrandon.com?subject=${subject}&body=${body}`;
+        show('Ready to send. Opening your email client with a pre-filled message.');
 
-        show('Ready to send. Your email client will open with a pre-filled message.');
-
-        // Give users a clear next step (better than silent “success”)
-        setTimeout(() => { window.location.href = mailto; }, 350);
+        setTimeout(() => { window.location.href = mailto; }, 320);
       });
 
       // Prefill if returning
@@ -1183,6 +1115,25 @@
           if (saved.msg) form.msg.value = saved.msg;
         }
       } catch (_) {}
+    })();
+
+    // Lightweight reveal animations
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const els = Array.from(document.querySelectorAll('.fadeUp'));
+      if (!('IntersectionObserver' in window) || els.length === 0) return;
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      els.forEach(el => io.observe(el));
     })();
   </script>
 </body>
